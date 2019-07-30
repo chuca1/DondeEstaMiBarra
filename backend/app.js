@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://gifted-lovelace-074bca.netlify.com/signup"]
+    origin: ["https://gifted-lovelace-074bca.netlify.com"]
   })
 );
 
