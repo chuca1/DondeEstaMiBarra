@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 const passport = require("./config/passport");
-const cors = require("cors");
 
 mongoose
   .connect(process.env.DB, { useNewUrlParser: true })
@@ -33,12 +32,6 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3001"]
-  })
-);
 
 // Express View engine setup
 
