@@ -34,3 +34,11 @@ code {
   align-content: center;
   padding: 15%;
 }
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+#root {
+  min-height: 100%;
+}

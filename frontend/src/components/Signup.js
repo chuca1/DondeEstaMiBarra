@@ -1,7 +1,8 @@
 import React from "react";
-import { Icon, Input, Button, Checkbox } from "antd";
 import AuthService from "../services/auth";
 import useForm from "../Hooks/useForm";
+import { Input, Icon, Button } from "antd";
+
 function Signup(props) {
   const [form, handleInput] = useForm();
   const authService = new AuthService();

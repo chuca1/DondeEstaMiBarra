@@ -497,8 +497,9 @@ const equipos = [
     ]
   }
 ];
+require("dotenv").config();
 mongoose
-  .connect("mongodb://localhost/backend", { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(async () => {
     const results = await Equipo.create(equipos);
     console.log(`${results.length}, equipos created`);

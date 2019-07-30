@@ -17,3 +17,8 @@ exports.createNewPublicacion = (req, res, next) => {
     })
     .catch(err => res.status(500).json({ err }));
 };
+exports.findAllPost = (req, res, next) => {
+  Publicacion.find()
+    .then(posts => res.status(201).json({ posts }))
+    .catch(err => res.status(500).json(err));
+};

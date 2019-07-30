@@ -15,4 +15,4 @@ const eventoSchema = new Schema(
   }
 );
 
-moudule.exports = model("Evento", eventoSchema);
+module.exports = model("Evento", eventoSchema);

@@ -17,3 +17,8 @@ exports.createNewEvento = (req, res, next) => {
     })
     .catch(err => res.status(500).json({ err }));
 };
+exports.getAllEventos = (req, res, next) => {
+  Evento.find()
+    .then(eventos => res.status(201).json(eventos))
+    .err(err => res.status(500).json({ err }));
+};
