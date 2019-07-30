@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.77f587bd.chunk.css",
+    "main.js": "/static/js/main.a3147eaa.chunk.js",
+    "main.js.map": "/static/js/main.a3147eaa.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.6d3a7656.chunk.css": "/static/css/2.6d3a7656.chunk.css",
+    "static/js/2.dd444838.chunk.js": "/static/js/2.dd444838.chunk.js",
+    "static/js/2.dd444838.chunk.js.map": "/static/js/2.dd444838.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7d67c30e5de7032877ee43366ef8155b.js": "/precache-manifest.7d67c30e5de7032877ee43366ef8155b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.6d3a7656.chunk.css.map": "/static/css/2.6d3a7656.chunk.css.map",
+    "static/css/main.77f587bd.chunk.css.map": "/static/css/main.77f587bd.chunk.css.map",
+    "static/media/antMotionStyle.less": "/static/media/antMotionStyle.46946042.less",
+    "static/media/index.css": "/static/media/fondo.b1d5b621.jpg"
+  }
+}
