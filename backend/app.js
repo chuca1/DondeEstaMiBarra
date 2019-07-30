@@ -27,6 +27,7 @@ const debug = require("debug")(
 const app = express();
 
 // Middleware Setup
+app.set("view engine", "html");
 app.use(passport.initialize());
 app.use(logger("dev"));
 app.use(bodyParser.json());
