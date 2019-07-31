@@ -6,6 +6,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const hbs = require("hbs");
 const passport = require("./config/passport");
 const cors = require("cors");
 
@@ -41,7 +42,9 @@ app.use(
 );
 
 // Express View engine setup
-
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
+app.use(express.static(path.join(__dirname, "public")));
 app.use(
   require("node-sass-middleware")({
     src: path.join(__dirname, "public"),
