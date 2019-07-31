@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import AuthService from "../../services/auth";
-
+import { Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import Todos_E from "./Todos_E";
 const { Content, Footer, Sider } = Layout;
@@ -49,8 +49,10 @@ function Profile(props) {
               <span className="nav-text">Tus Eventos</span>
             </Menu.Item>
             <Menu.Item key="5">
-              <Icon type="insurance" />
-              <span className="nave-text">Todos los equipos</span>
+              <Link to={`/profile/equipos`}>
+                <Icon type="insurance" />
+                <span className="nave-text">Todos los equipos</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="4" onClick={handleLogout}>
               <Icon type="logout" />
@@ -61,7 +63,9 @@ function Profile(props) {
         <Layout>
           <Content style={{ margin: "24px 16px 0" }}>
             <div style={{ padding: 24, background: "#fff", minHeight: "90vh" }}>
-              <Todos_E />
+              <Switch>
+                <Route exact path="/profile/equipos" component={Todos_E} />
+              </Switch>
             </div>
           </Content>
         </Layout>

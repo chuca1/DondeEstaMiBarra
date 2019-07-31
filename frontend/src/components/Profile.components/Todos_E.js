@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
-const { Meta } = Card;
 
 class Todos_E extends Component {
   state = {
     equipos: [],
     equipo: []
   };
+
   componentDidMount = () => {
     axios
       .get("http://localhost:3000/liga/LigaMX")
@@ -34,14 +34,19 @@ class Todos_E extends Component {
               title={equipo.name}
               style={{
                 width: "33%",
-                height: "15%",
+                maxheight: "15%",
                 display: "flex",
                 flexDirection: "column",
                 aligncontent: "center"
               }}
             >
-              <Link to={`/profile/${equipo._id}`}>
-                <img width="200" height="250" src={equipo.logo} alt="puto" />
+              <Link to={`/profile/equipo/${equipo._id}`}>
+                <img
+                  width="100%"
+                  maxheight="75%"
+                  src={equipo.logo}
+                  alt="puto"
+                />
               </Link>
             </Card>
           );
