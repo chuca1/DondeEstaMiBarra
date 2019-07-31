@@ -40,7 +40,7 @@ class Todos_E extends Component {
                 aligncontent: "center"
               }}
             >
-              <Link to={`/profile/equipo/${equipo._id}`}>
+              <Link to={`/profile/equipo/${equipo._id}/posts`}>
                 <img
                   width="100%"
                   maxheight="75%"

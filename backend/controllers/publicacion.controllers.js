@@ -7,18 +7,30 @@ exports.createNewPublicacion = (req, res, next) => {
     .then(publicacion => {
       Equipo.findByIdAndUpdate(
         id,
-        { $push: { publicacion: publicacion.id } },
-        { new: true, upsert: true },
-        function(err, managerparent) {
-          if (err) res.status(500).json({ err });
-        }
-      );
-      res.status(200).json("Publicacion creada");
+        { $push: { publicaciones: publicacion.id } },
+        { new: true }
+      ).then(equipo => {});
+
+      res.status(200).json({ publicacion });
     })
     .catch(err => res.status(500).json({ err }));
 };
-exports.findAllPost = (req, res, next) => {
-  Publicacion.find()
-    .then(posts => res.status(201).json({ posts }))
-    .catch(err => res.status(500).json(err));
+exports.findAllTeamPost = (req, res, next) => {
+  const { id } = req.params;
+  Equipo.findById(id)
+
+    .then(equipo => {
+      let publicacioness = [];
+
+      equipo.publicaciones.map(publicacion => {
+        const id = publicacion;
+        Publicacion.findById(id).then(publi => {
+          publicacioness.push(publi);
+          if (publicacioness.length == equipo.publicaciones.length) {
+            res.status(201).json({ publicacioness });
+          }
+        });
+      });
+    })
+    .catch();
 };

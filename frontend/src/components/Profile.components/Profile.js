@@ -3,7 +3,8 @@ import AuthService from "../../services/auth";
 import { Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import Todos_E from "./Todos_E";
-const { Content, Footer, Sider } = Layout;
+import Un_Equipo from "./Equipo/Equipo";
+const { Content, Sider } = Layout;
 
 function Profile(props) {
   const authService = new AuthService();
@@ -37,19 +38,25 @@ function Profile(props) {
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
-              <Icon type="idcard" />
-              <span className="nav-text">Perfil</span>
+              <Link to={`/profile/`}>
+                <Icon type="idcard" />
+                <span className="nav-text">Perfil</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="insurance" />
-              <span className="nav-text">Tus equipo</span>
+              <Link to={`/profile/equipos`}>
+                <Icon type="insurance" />
+                <span className="nav-text">Tus equipo</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="contacts" />
-              <span className="nav-text">Tus Eventos</span>
+              <Link to={`/profile/eventos`}>
+                <Icon type="contacts" />
+                <span className="nav-text">Tus Eventos</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="5">
-              <Link to={`/profile/equipos`}>
+              <Link to={`/profile/T_equipos`}>
                 <Icon type="insurance" />
                 <span className="nave-text">Todos los equipos</span>
               </Link>
@@ -64,7 +71,8 @@ function Profile(props) {
           <Content style={{ margin: "24px 16px 0" }}>
             <div style={{ padding: 24, background: "#fff", minHeight: "90vh" }}>
               <Switch>
-                <Route exact path="/profile/equipos" component={Todos_E} />
+                <Route exact path="/profile/T_equipos" component={Todos_E} />
+                <Route path="/profile/equipo/:id" component={Un_Equipo} />
               </Switch>
             </div>
           </Content>

@@ -6,6 +6,7 @@ function Login(props) {
   const authService = new AuthService();
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
+    console.log(JSON.parse(loggedUser));
     if (loggedUser) return props.history.push("/profile");
   }, [props.history]);
 

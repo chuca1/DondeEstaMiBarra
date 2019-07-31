@@ -10,7 +10,7 @@ const userSchema = new Schema(
       enum: ["USER", "MASTERMIND"],
       default: "USER"
     },
-    teams: Array,
+    team: String,
     publicaciones: Array
   },
   {

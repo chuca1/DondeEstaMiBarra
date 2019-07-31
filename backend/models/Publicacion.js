@@ -4,7 +4,8 @@ const publicacionSchema = new Schema(
   {
     usuario: String,
     contenido: String,
-    foto: String
+    foto: String,
+    equipo: String
   },
   {
     timestamps: true,
