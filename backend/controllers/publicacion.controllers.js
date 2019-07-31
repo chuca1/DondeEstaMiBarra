@@ -15,6 +15,12 @@ exports.createNewPublicacion = (req, res, next) => {
     })
     .catch(err => res.status(500).json({ err }));
 };
+exports.findOnePost = (req, res, next) => {
+  const { id } = req.params;
+  Publicacion.findById(id).then(post => {
+    res.status(201).json({ post });
+  });
+};
 exports.findAllTeamPost = (req, res, next) => {
   const { id } = req.params;
   Equipo.findById(id)

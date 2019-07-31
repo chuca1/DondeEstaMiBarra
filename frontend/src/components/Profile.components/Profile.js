@@ -4,6 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import Todos_E from "./Todos_E";
 import Un_Equipo from "./Equipo/Equipo";
+import Perfil from "./Perfil/Perfil";
 const { Content, Sider } = Layout;
 
 function Profile(props) {
@@ -46,7 +47,7 @@ function Profile(props) {
             <Menu.Item key="2">
               <Link to={`/profile/equipos`}>
                 <Icon type="insurance" />
-                <span className="nav-text">Tus equipo</span>
+                <span className="nav-text">Tu equipo</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="3">
@@ -71,6 +72,7 @@ function Profile(props) {
           <Content style={{ margin: "24px 16px 0" }}>
             <div style={{ padding: 24, background: "#fff", minHeight: "90vh" }}>
               <Switch>
+                <Route exact path="/profile/" component={Perfil} />
                 <Route exact path="/profile/T_equipos" component={Todos_E} />
                 <Route path="/profile/equipo/:id" component={Un_Equipo} />
               </Switch>

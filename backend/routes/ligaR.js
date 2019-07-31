@@ -10,9 +10,11 @@ const {
 } = require("../controllers/eventos.controllers");
 const {
   createNewPublicacion,
-  findAllTeamPost
+  findAllTeamPost,
+  findOnePost
 } = require("../controllers/publicacion.controllers");
 /* GET home page */
+router.get("/post/:id", findOnePost);
 router.get("/:liga", getEquiposPorLiga);
 router.get("/:liga/:id", getOneEquipo);
 router.post("/:liga/:id/post", createNewPublicacion);
