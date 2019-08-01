@@ -17,7 +17,9 @@ class SeeTuEvents extends Component {
     this.setState({ user });
     axios
       .get(
-        `http://localhost:3000/liga/LigaMX/${params.id}/evento/${params.rival}`
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${
+          params.id
+        }/evento/${params.rival}`
       )
       .then(({ data }) => {
         console.log(data);
