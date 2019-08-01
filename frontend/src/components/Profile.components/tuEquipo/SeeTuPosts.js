@@ -2,20 +2,20 @@ import React, { Component } from "react";
 import PostCreate from "../../PostCreate";
 import axios from "axios";
 import { Card } from "antd";
-class SeePosts extends Component {
+class SeeTuPosts extends Component {
   state = {
     publicacioness: [],
     form: []
   };
 
   componentDidMount = () => {
-    const {
-      match: { params }
-    } = this.props;
+    let loggedUser = localStorage.getItem("loggedUser");
+    let user = JSON.parse(loggedUser);
+    this.setState({ user });
     axios
       .get(
         `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${
-          params.id
+          user.team
         }/post`
       )
       .then(({ data }) => {
@@ -30,7 +30,7 @@ class SeePosts extends Component {
       publicacioness.sort((a, b) => (a._id > b._id ? -1 : 1));
 
       return (
-        <div>
+        <div style={{ width: "80vw" }}>
           <PostCreate propps={this.props} />
           {publicacioness.map((publicaion, i) => {
             return (
@@ -46,11 +46,11 @@ class SeePosts extends Component {
       <div>
         <PostCreate propps={this.props} />
         <Card title={`Perdon pero`}>
-          <p>No hay eventos aun</p>
+          <p>No hay publicaciones aun</p>
         </Card>
       </div>
     );
   }
 }
 
-export default SeePosts;
+export default SeeTuPosts;

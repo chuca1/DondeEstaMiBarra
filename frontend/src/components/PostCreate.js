@@ -1,7 +1,7 @@
 import React from "react";
 import useForm from "../Hooks/useForm";
 import axios from "axios";
-
+import { Input, Card, Button } from "antd";
 function PostCreate(props) {
   const paramss = props;
   const params = paramss.propps.match.params;
@@ -25,6 +25,9 @@ function PostCreate(props) {
             form
           )
           .then(({ data }) => {
+            user.publicaciones.push(data.publicacion._id);
+
+            localStorage.setItem("loggedUser", JSON.stringify(user));
             history.push(`/profile/equipo/${params.id}`);
           })
           .catch(err => {
@@ -35,17 +38,16 @@ function PostCreate(props) {
 
   return (
     <div>
-      <p>
-        <label>Que estas pensando?</label>
-        <input
+      <Card>
+        <h4>Que estas pensando?</h4>
+        <Input
           type="text"
           name="contenido"
           placeholder="Contenido"
           onChange={e => tuputa(e)}
         />
-      </p>
-
-      <button onClick={createPost}>Publicar </button>
+        <Button onClick={createPost}>Publicar </Button>
+      </Card>
     </div>
   );
 }

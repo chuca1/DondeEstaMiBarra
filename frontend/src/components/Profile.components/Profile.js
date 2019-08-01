@@ -5,6 +5,8 @@ import { Layout, Menu, Icon } from "antd";
 import Todos_E from "./Todos_E";
 import Un_Equipo from "./Equipo/Equipo";
 import Perfil from "./Perfil/Perfil";
+import tuEquipo from "./tuEquipo/tuEquipo";
+
 const { Content, Sider } = Layout;
 
 function Profile(props) {
@@ -25,7 +27,11 @@ function Profile(props) {
 
   return (
     <>
-      <Layout style={{ height: "100vh" }}>
+      <Layout
+        style={{
+          height: "100vh"
+        }}
+      >
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
@@ -50,12 +56,7 @@ function Profile(props) {
                 <span className="nav-text">Tu equipo</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="3">
-              <Link to={`/profile/eventos`}>
-                <Icon type="contacts" />
-                <span className="nav-text">Tus Eventos</span>
-              </Link>
-            </Menu.Item>
+
             <Menu.Item key="5">
               <Link to={`/profile/T_equipos`}>
                 <Icon type="insurance" />
@@ -68,10 +69,25 @@ function Profile(props) {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout>
-          <Content style={{ margin: "24px 16px 0" }}>
-            <div style={{ padding: 24, background: "#fff", minHeight: "90vh" }}>
+        <Layout
+          style={{
+            backgroundImage:
+              "url(https://image.freepik.com/foto-gratis/campo-futbol-fondo-foco-estadio_46250-1363.jpg)",
+            backgroundSize: "cover"
+          }}
+        >
+          <Content
+            style={{
+              margin: "24px 16px 0",
+              backgroundImage:
+                "url(https://image.freepik.com/foto-gratis/campo-futbol-fondo-foco-estadio_46250-1363.jpg)"
+            }}
+          >
+            <div
+              style={{ padding: 24, background: "#F6FAFF", minHeight: "90vh" }}
+            >
               <Switch>
+                <Route path="/profile/equipos" component={tuEquipo} />
                 <Route exact path="/profile/" component={Perfil} />
                 <Route exact path="/profile/T_equipos" component={Todos_E} />
                 <Route path="/profile/equipo/:id" component={Un_Equipo} />

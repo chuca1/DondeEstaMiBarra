@@ -3,19 +3,19 @@ import { Card } from "antd";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-class Encuentros extends Component {
+class TuEncuentros extends Component {
   state = {
     equipoT: [],
     juegos: [],
     equipos: []
   };
   componentDidMount = () => {
-    const {
-      match: { params }
-    } = this.props;
+    let loggedUser = localStorage.getItem("loggedUser");
+    let user = JSON.parse(loggedUser);
+    this.setState({ user });
     axios
       .get(
-        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${params.id}`
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${user.team}`
       )
       .then(({ data }) => {
         this.setState({ juegos: data.equipo.juegos });
@@ -32,7 +32,13 @@ class Encuentros extends Component {
     const { juegos, equipos, equipoT } = this.state;
 
     return (
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap"
+        }}
+      >
         {juegos.map((equipo, i) => {
           return (
             <Card
@@ -52,7 +58,7 @@ class Encuentros extends Component {
                   return (
                     <div key={i}>
                       <Link
-                        to={`/profile/equipo/${equipoT._id}/encuentros/${
+                        to={`/profile/equipos/${equipoT._id}/encuentros/${
                           equipoE._id
                         }`}
                       >
@@ -74,4 +80,4 @@ class Encuentros extends Component {
   }
 }
 
-export default Encuentros;
+export default TuEncuentros;

@@ -42,8 +42,7 @@ class Todos_E extends Component {
             >
               <Link to={`/profile/equipo/${equipo._id}/posts`}>
                 <img
-                  width="100%"
-                  maxheight="75%"
+                  style={{ maxWidth: "13vw", height: "13vh" }}
                   src={equipo.logo}
                   alt="puto"
                 />

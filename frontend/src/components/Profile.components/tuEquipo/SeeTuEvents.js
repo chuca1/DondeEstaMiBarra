@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import axios from "axios";
-import { Card } from "antd";
 import { Map, TileLayer, Marker } from "react-leaflet";
+import { Card } from "antd";
 import EventCreate from "../../EventCreate";
-class SeeEvents extends Component {
+class SeeTuEvents extends Component {
   state = {
     evnetosQ: []
   };
@@ -13,6 +12,9 @@ class SeeEvents extends Component {
     const {
       match: { params }
     } = this.props;
+    let loggedUser = localStorage.getItem("loggedUser");
+    let user = JSON.parse(loggedUser);
+    this.setState({ user });
     axios
       .get(
         `http://localhost:3000/liga/LigaMX/${params.id}/evento/${params.rival}`
@@ -34,8 +36,8 @@ class SeeEvents extends Component {
             console.log(event);
             return (
               <Card title={`${event.equipo} Vs ${event.rival}`} key={i}>
-                <h5>{event.fecha}</h5>
-                <h5>{event.lugar}</h5>
+                <h4>{event.fecha}</h4>
+                <h4>{event.lugar}</h4>
                 {event.lng !== 0 && event.lat !== 0 ? (
                   <div>
                     <Map
@@ -57,8 +59,6 @@ class SeeEvents extends Component {
                 ) : (
                   <></>
                 )}
-
-                <br />
               </Card>
             );
           })}
@@ -69,11 +69,11 @@ class SeeEvents extends Component {
       <div>
         <EventCreate propps={this.props} />
         <Card title={`Perdon pero`}>
-          <p>No hay eventos aun</p>
+          <p>No hay Eventos aun</p>
         </Card>
       </div>
     );
   }
 }
 
-export default SeeEvents;
+export default SeeTuEvents;
