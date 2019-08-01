@@ -39,29 +39,33 @@ exports.findAllTeamEvents = (req, res, next) => {
 };
 exports.findAllEventsVs = (req, res, next) => {
   const { id, rival } = req.params;
+  console.log(req.params);
 
   Equipo.findById(id)
     .then(equipo => {
       let eventss = [];
       let eventosQ = [];
-      console.log("fs,ffa", equipo.eventos);
       if (equipo.eventos.length > 0) {
+        let a = equipo.eventos.length;
         equipo.eventos.map(evento => {
           eventss.push(evento);
-          Equipo.findById({ id: rival })
+          Equipo.findById(rival)
             .then(equipo => {
-              if (equipo.name == evento.rival) {
-                eventosQ.push(evento);
-              }
+              Evento.findById(evento).then(evento => {
+                a--;
+                console.log(a);
+                if (equipo.name == evento.rival) {
+                  eventosQ.push(evento);
+                }
+
+                if (a == 0) {
+                  res.status(201).json({ eventosQ });
+                }
+              });
             })
             .catch(err => console.log(err));
-          if (eventss.length == equipo.eventos.length) {
-            res.status(201).json({ eventosQ });
-          }
         });
       }
-      let evnetss = [];
-      res.status(201).json({ evnetss });
     })
     .catch(err => console.log(err));
 };

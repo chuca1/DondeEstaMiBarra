@@ -9,7 +9,13 @@ exports.createNewPublicacion = (req, res, next) => {
         id,
         { $push: { publicaciones: publicacion.id } },
         { new: true }
-      ).then(equipo => {});
+      ).then(equipo => {
+        User.findByIdAndUpdate(
+          id,
+          { $push: { publicaciones: publicacion.id } },
+          { new: true }
+        ).then(equipo => {});
+      });
 
       res.status(200).json({ publicacion });
     })
