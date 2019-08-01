@@ -6,8 +6,14 @@ const eventoSchema = new Schema(
     rival: String,
     fecha: String,
     lugar: String,
-    lat: Number,
-    lng: Number
+    lat: {
+      type: Number,
+      default: 0
+    },
+    lng: {
+      type: Number,
+      default: 0
+    }
   },
   {
     timestamps: true,

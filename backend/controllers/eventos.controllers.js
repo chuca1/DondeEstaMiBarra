@@ -18,25 +18,16 @@ exports.createNewEvento = (req, res, next) => {
     .catch(err => res.status(500).json({ err }));
 };
 
-exports.findAllTeamEvents = (req, res, next) => {
+exports.findEvent = (req, res, next) => {
   const { id } = req.params;
-  Equipo.findById(id)
+  Evento.findById(id)
 
-    .then(equipo => {
-      let eventss = [];
-
-      equipo.eventos.map(evento => {
-        const id = evento;
-        Event.findById(id).then(event => {
-          eventss.push(event);
-          if (eventss.length == equipo.eventos.length) {
-            res.status(201).json({ eventss });
-          }
-        });
-      });
+    .then(evento => {
+      res.status(201).json({ evento });
     })
     .catch();
 };
+
 exports.findAllEventsVs = (req, res, next) => {
   const { id, rival } = req.params;
   console.log(req.params);
