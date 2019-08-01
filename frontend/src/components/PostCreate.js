@@ -28,7 +28,6 @@ function PostCreate(props) {
             user.publicaciones.push(data.publicacion._id);
 
             localStorage.setItem("loggedUser", JSON.stringify(user));
-            history.push(`/profile/equipo/${params.id}`);
           })
           .catch(err => {
             console.log(err);

@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "../Hooks/useForm";
 import axios from "axios";
 import { Input, Card, Button } from "antd";
-import { Link } from "react-router-dom";
+
 function EventCreate(props) {
   const paramss = props;
   const params = paramss.propps.match.params;
@@ -82,7 +82,7 @@ function EventCreate(props) {
       />
       <h6>
         Para encontrarlo mas rapido ingresa aqui{" "}
-        <Link to="https://www.latlong.net/">Aqui!!</Link>
+        <a href="https://www.latlong.net/">Aqui!!</a>
       </h6>
 
       <Button onClick={createEvent}>Publicar </Button>
