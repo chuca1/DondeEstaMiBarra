@@ -3,7 +3,6 @@ const User = require("../models/User");
 const Equipo = require("../models/Equipo");
 exports.createNewPublicacion = (req, res, next) => {
   const { id } = req.params;
-  console.log(req.user.id);
   Publicacion.create({ ...req.body })
     .then(publicacion => {
       Equipo.findByIdAndUpdate(
@@ -11,8 +10,8 @@ exports.createNewPublicacion = (req, res, next) => {
         { $push: { publicaciones: publicacion.id } },
         { new: true }
       ).then(equipo => {
-        User.findByIdAndUpdate(
-          req.user.id,
+        User.findOneAndUpdate(
+          { name: req.body.usuario },
           { $push: { publicaciones: publicacion.id } },
           { new: true }
         ).then(equipo => {});
