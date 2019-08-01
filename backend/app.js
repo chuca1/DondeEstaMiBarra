@@ -37,7 +37,10 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://affectionate-franklin-d5b3a2.netlify.com"]
+    origin: [
+      "https://affectionate-franklin-d5b3a2.netlify.com",
+      "http://localhost:3001"
+    ]
   })
 );
 
