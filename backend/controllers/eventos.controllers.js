@@ -13,7 +13,7 @@ exports.createNewEvento = (req, res, next) => {
           if (err) res.status(500).json({ err });
         }
       );
-      res.status(200).json("Evento creado");
+      res.status(200).json({ evento });
     })
     .catch(err => res.status(500).json({ err }));
 };
