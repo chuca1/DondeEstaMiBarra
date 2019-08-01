@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, Switch, Route } from "react-router-dom";
 import Encuentros from "./Encuentros";
 import SeePosts from "./SeePosts";
+import SeeEvents from "./SeeEvents";
 const { Content } = Layout;
 class Un_Equipo extends Component {
   state = {
@@ -14,7 +15,9 @@ class Un_Equipo extends Component {
       match: { params }
     } = this.props;
     axios
-      .get(`http://localhost:3000/liga/LigaMX/${params.id}`)
+      .get(
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${params.id}`
+      )
       .then(({ data }) => {
         this.setState({ equipo: data.equipo });
       });
@@ -47,6 +50,11 @@ class Un_Equipo extends Component {
                 exact
                 path="/profile/equipo/:id/encuentros"
                 component={Encuentros}
+              />
+              <Route
+                exact
+                path="/profile/equipo/:id/encuentros/:rival"
+                component={SeeEvents}
               />
             </Switch>
           </div>

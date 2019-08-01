@@ -11,7 +11,7 @@ class Todos_E extends Component {
 
   componentDidMount = () => {
     axios
-      .get("http://localhost:3000/liga/LigaMX")
+      .get("https://polar-savannah-65683.herokuapp.com/liga/LigaMX")
       .then(({ data }) => {
         this.setState({ equipos: data.equipos });
       })
@@ -27,10 +27,10 @@ class Todos_E extends Component {
           flexWrap: "wrap"
         }}
       >
-        {equipos.map(equipo => {
+        {equipos.map((equipo, i) => {
           return (
             <Card
-              key={equipo.id}
+              key={i}
               title={equipo.name}
               style={{
                 width: "33%",

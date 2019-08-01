@@ -4,29 +4,37 @@ import axios from "axios";
 
 class SeePosts extends Component {
   state = {
-    publicacioness: []
+    publicacioness: [],
+    form: []
   };
+
   componentDidMount = () => {
     const {
       match: { params }
     } = this.props;
     axios
-      .get(`http://localhost:3000/liga/LigaMX/${params.id}/post`)
+      .get(
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${
+          params.id
+        }/post`
+      )
       .then(({ data }) => {
-        console.log(data);
         this.setState({ publicacioness: data.publicacioness });
       });
   };
+
   render() {
     const { publicacioness } = this.state;
-    console.log(publicacioness);
+
     if (publicacioness.length > 0) {
+      publicacioness.sort((a, b) => (a._id > b._id ? -1 : 1));
+
       return (
         <div>
-          {publicacioness.map(publicaion => {
-            console.log(publicaion);
+          <PostCreate propps={this.props} />
+          {publicacioness.map((publicaion, i) => {
             return (
-              <div>
+              <div key={i}>
                 <h3>{publicaion.usuario}</h3>
                 <p>{publicaion.contenido}</p>
               </div>
@@ -37,6 +45,7 @@ class SeePosts extends Component {
     }
     return (
       <div>
+        <PostCreate propps={this.props} />
         <h1>No hay publicaciones aun</h1>
       </div>
     );

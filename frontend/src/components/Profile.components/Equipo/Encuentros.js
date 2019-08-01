@@ -5,7 +5,7 @@ import { Link, Switch, Route } from "react-router-dom";
 
 class Encuentros extends Component {
   state = {
-    equipo: [],
+    equipoT: [],
     juegos: [],
     equipos: []
   };
@@ -14,11 +14,14 @@ class Encuentros extends Component {
       match: { params }
     } = this.props;
     axios
-      .get(`http://localhost:3000/liga/LigaMX/${params.id}`)
+      .get(
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${params.id}`
+      )
       .then(({ data }) => {
         this.setState({ juegos: data.equipo.juegos });
+        this.setState({ equipoT: data.equipo });
         axios
-          .get(`http://localhost:3000/liga/LigaMX`)
+          .get(`https://polar-savannah-65683.herokuapp.com/liga/LigaMX`)
           .then(({ data }) => {
             this.setState({ equipos: data.equipos });
           })
@@ -26,13 +29,14 @@ class Encuentros extends Component {
       });
   };
   render() {
-    const { juegos, equipos } = this.state;
+    const { juegos, equipos, equipoT } = this.state;
+
     return (
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {juegos.map(equipo => {
+        {juegos.map((equipo, i) => {
           return (
             <Card
-              key={equipo.id}
+              key={i}
               title={equipo.name}
               style={{
                 width: "33%",
@@ -42,16 +46,22 @@ class Encuentros extends Component {
                 aligncontent: "center"
               }}
             >
-              {equipos.map(equipoE => {
+              {equipos.map((equipoE, i) => {
                 if (equipoE.name === equipo) {
                   return (
-                    <Link to={`/profile/equipo/${equipoE._id}/posts`}>
-                      <img
-                        src={equipoE.logo}
-                        alt="puto"
-                        style={{ maxWidth: "100%", maxHeight: "100%" }}
-                      />
-                    </Link>
+                    <div key={i}>
+                      <Link
+                        to={`/profile/equipo/${equipoT._id}/encuentros/${
+                          equipoE._id
+                        }`}
+                      >
+                        <img
+                          src={equipoE.logo}
+                          alt="puto"
+                          style={{ maxWidth: "100%", maxHeight: "100%" }}
+                        />
+                      </Link>
+                    </div>
                   );
                 }
               })}

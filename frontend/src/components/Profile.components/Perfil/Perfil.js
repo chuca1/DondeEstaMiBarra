@@ -15,7 +15,9 @@ class Perfil extends Component {
     let eventos = [];
     this.setState({ user });
     axios
-      .get(`http://localhost:3000/liga/LigaMX/${user.team}`)
+      .get(
+        `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${user.team}`
+      )
       .then(({ data }) => {
         this.setState({ equipo: data.equipo });
       });
