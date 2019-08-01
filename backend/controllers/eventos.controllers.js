@@ -68,6 +68,7 @@ exports.AddEventUser = (req, res, next) => {
     { new: true, upsert: true },
     function(err, managerparent) {
       if (err) res.status(500).json({ err });
-    }
+    },
+    res.status(201).json({ user })
   );
 };
