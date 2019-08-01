@@ -7,7 +7,7 @@ function EventCreate(props) {
   const paramss = props;
   const params = paramss.propps.match.params;
   const history = paramss.propps.history;
-  const [form, tuputa] = useForm();
+  const [form, formedit] = useForm();
   const loggedUser = localStorage.getItem("loggedUser");
   const user = JSON.parse(loggedUser);
   form.usuario = user.name;
@@ -60,25 +60,25 @@ function EventCreate(props) {
         type="text"
         name="fecha"
         placeholder="Fecha y hora"
-        onChange={e => tuputa(e)}
+        onChange={e => formedit(e)}
       />
       <Input
         type="text"
         name="lugar"
         placeholder="Escribe la direccion de tu evento "
-        onChange={e => tuputa(e)}
+        onChange={e => formedit(e)}
       />
       <Input
         type="number"
         name="lat"
         placeholder="Ingresa la latitud de tu evento"
-        onChange={e => tuputa(e)}
+        onChange={e => formedit(e)}
       />
       <Input
         type="number"
         name="lng"
         placeholder="Ingresa la longitud de tu evento"
-        onChange={e => tuputa(e)}
+        onChange={e => formedit(e)}
       />
       <h6>
         Para encontrarlo mas rapido ingresa aqui{" "}

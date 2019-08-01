@@ -6,7 +6,7 @@ function PostCreate(props) {
   const paramss = props;
   const params = paramss.propps.match.params;
   const history = paramss.propps.history;
-  const [form, tuputa] = useForm();
+  const [form, formedit] = useForm();
   const loggedUser = localStorage.getItem("loggedUser");
   const user = JSON.parse(loggedUser);
   form.usuario = user.name;
@@ -43,7 +43,7 @@ function PostCreate(props) {
           type="text"
           name="contenido"
           placeholder="Contenido"
-          onChange={e => tuputa(e)}
+          onChange={e => formedit(e)}
         />
         <Button onClick={createPost}>Publicar </Button>
       </Card>
