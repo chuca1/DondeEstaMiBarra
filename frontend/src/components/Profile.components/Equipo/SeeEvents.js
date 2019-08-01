@@ -68,7 +68,6 @@ class SeeEvents extends Component {
     }
     return (
       <div>
-        <EventCreate propps={this.props} />
         <Card title={`Perdon pero`}>
           <p>No hay eventos aun</p>
         </Card>
