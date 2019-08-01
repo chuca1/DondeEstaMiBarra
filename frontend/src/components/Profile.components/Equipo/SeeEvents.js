@@ -31,7 +31,6 @@ class SeeEvents extends Component {
     if (evnetosQ.length > 0) {
       return (
         <div>
-          <EventCreate propps={this.props} />
           {evnetosQ.map((event, i) => {
             console.log(event);
             return (

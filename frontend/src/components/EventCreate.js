@@ -82,7 +82,7 @@ function EventCreate(props) {
       />
       <h6>
         Para encontrarlo mas rapido ingresa aqui{" "}
-        <Link>https://www.latlong.net/</Link>
+        <Link to="https://www.latlong.net/">Aqui!!</Link>
       </h6>
 
       <Button onClick={createEvent}>Publicar </Button>
