@@ -1,6 +1,6 @@
 const Evento = require("../models/Evento");
 const Equipo = require("../models/Equipo");
-
+const User = require("../models/User");
 exports.createNewEvento = (req, res, next) => {
   const { id } = req.params;
   Evento.create({ ...req.body })
@@ -59,4 +59,15 @@ exports.findAllEventsVs = (req, res, next) => {
       }
     })
     .catch(err => console.log(err));
+};
+exports.AddEventUser = (req, res, next) => {
+  const { user, id } = req.params;
+  User.findByIdAndUpdate(
+    user,
+    { $push: { eventos: id } },
+    { new: true, upsert: true },
+    function(err, managerparent) {
+      if (err) res.status(500).json({ err });
+    }
+  );
 };

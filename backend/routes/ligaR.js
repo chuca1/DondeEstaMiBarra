@@ -7,7 +7,8 @@ const {
 const {
   createNewEvento,
   findAllEventsVs,
-  findEvent
+  findEvent,
+  AddEventUser
 } = require("../controllers/eventos.controllers");
 const {
   createNewPublicacion,
@@ -23,4 +24,5 @@ router.post("/:liga/:id/evento", createNewEvento);
 router.get("/:liga/:id/post", findAllTeamPost);
 router.get("/:liga/:id/evento/:rival", findAllEventsVs);
 router.get("/:liga/:id/evento", findEvent);
+router.post("/:liga/:user/evento/:id/add", AddEventUser);
 module.exports = router;
