@@ -7,7 +7,7 @@ exports.createNewEvento = (req, res, next) => {
     .then(evento => {
       Equipo.findByIdAndUpdate(
         id,
-        { $push: { evnetos: evento.id } },
+        { $push: { eventos: evento.id } },
         { new: true, upsert: true },
         function(err, managerparent) {
           if (err) res.status(500).json({ err });
@@ -44,7 +44,7 @@ exports.findAllEventsVs = (req, res, next) => {
     .then(equipo => {
       let eventss = [];
       let eventosQ = [];
-      console.log(equipo.eventos);
+      console.log("fs,ffa", equipo.eventos);
       if (equipo.eventos.length > 0) {
         equipo.eventos.map(evento => {
           eventss.push(evento);

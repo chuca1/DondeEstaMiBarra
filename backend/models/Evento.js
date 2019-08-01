@@ -4,7 +4,7 @@ const eventoSchema = new Schema(
   {
     equipo: String,
     rival: String,
-    fecha: Date,
+    fecha: String,
     lugar: String,
     lat: Number,
     lng: Number
