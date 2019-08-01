@@ -12,6 +12,7 @@ class SeePosts extends Component {
     const {
       match: { params }
     } = this.props;
+
     axios
       .get(
         `https://polar-savannah-65683.herokuapp.com/liga/LigaMX/${

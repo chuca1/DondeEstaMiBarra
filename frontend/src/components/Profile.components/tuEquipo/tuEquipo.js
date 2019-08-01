@@ -43,7 +43,7 @@ class tuEquipo extends Component {
             style={{ maxHeight: "20vh", maxWidth: "20vwCC©" }}
           />
         </Layout>
-        <Layout>
+        <Layout style={{ background: "#F6FAFF" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Link to={`/profile/equipos`}>
               <Breadcrumb.Item>Posts</Breadcrumb.Item>

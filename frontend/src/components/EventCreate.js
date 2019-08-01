@@ -2,6 +2,7 @@ import React from "react";
 import useForm from "../Hooks/useForm";
 import axios from "axios";
 import { Input, Card, Button } from "antd";
+import { Link } from "react-router-dom";
 function EventCreate(props) {
   const paramss = props;
   const params = paramss.propps.match.params;
@@ -79,10 +80,10 @@ function EventCreate(props) {
         placeholder="Ingresa la longitud de tu evento"
         onChange={e => tuputa(e)}
       />
-      <label>
-        {" "}
-        Para encontrarlo mas rapido ingresa aqui https://www.latlong.net/{" "}
-      </label>
+      <h6>
+        Para encontrarlo mas rapido ingresa aqui{" "}
+        <Link>https://www.latlong.net/</Link>
+      </h6>
 
       <Button onClick={createEvent}>Publicar </Button>
     </Card>

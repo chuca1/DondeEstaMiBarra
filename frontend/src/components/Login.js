@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AuthService from "../services/auth";
 import useForm from "../Hooks/useForm";
+import { Input, Icon, Button } from "antd";
 function Login(props) {
   const [form, handleInput] = useForm();
   const authService = new AuthService();
@@ -22,17 +23,30 @@ function Login(props) {
       });
   };
   return (
-    <div>
-      <label htmlFor="email">Email</label>
-      <input type="email" name="email" id="email" onChange={handleInput} />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        onChange={handleInput}
-      />
-      <button onClick={handleLogin}>Login</button>
+    <div className="signup">
+      <div className="fondo">
+        <label htmlFor="email">Email</label>
+        <Input
+          prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
+          type="email"
+          name="email"
+          id="email"
+          onChange={handleInput}
+          placeholder="email"
+        />
+
+        <Input
+          prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+          type="password"
+          name="password"
+          id="password"
+          onChange={handleInput}
+          placeholder="password"
+        />
+        <Button type="primary" onClick={handleLogin}>
+          Login
+        </Button>
+      </div>
     </div>
   );
 }

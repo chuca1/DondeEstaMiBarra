@@ -27,7 +27,7 @@ class Un_Equipo extends Component {
     return (
       <>
         <h3>{equipo.name}</h3>
-        <Layout>
+        <Layout style={{ background: "#F6FAFF" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Link to={`/profile/equipo/${equipo._id}/posts`}>
               <Breadcrumb.Item>Posts</Breadcrumb.Item>

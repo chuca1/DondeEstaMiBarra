@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PostCreate from "../../PostCreate";
+
 import axios from "axios";
 import { Card } from "antd";
 class SeeTuPosts extends Component {
@@ -11,6 +11,7 @@ class SeeTuPosts extends Component {
   componentDidMount = () => {
     let loggedUser = localStorage.getItem("loggedUser");
     let user = JSON.parse(loggedUser);
+    console.log(this.props);
     this.setState({ user });
     axios
       .get(
@@ -31,7 +32,6 @@ class SeeTuPosts extends Component {
 
       return (
         <div style={{ width: "80vw" }}>
-          <PostCreate propps={this.props} />
           {publicacioness.map((publicaion, i) => {
             return (
               <Card title={`${publicaion.usuario}`} key={i}>
@@ -44,7 +44,6 @@ class SeeTuPosts extends Component {
     }
     return (
       <div>
-        <PostCreate propps={this.props} />
         <Card title={`Perdon pero`}>
           <p>No hay publicaciones aun</p>
         </Card>
