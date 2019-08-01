@@ -11,7 +11,8 @@ const userSchema = new Schema(
       default: "USER"
     },
     team: String,
-    publicaciones: Array
+    publicaciones: Array,
+    eventos: Array
   },
   {
     timestamps: true,
